@@ -1,8 +1,10 @@
-class Patient
+class Song
+ attr_accessor :name, :artist, :genre
  @@all = []
-
-  def initialize(name)
+ def initialize(name, artist, genre)
    @name = name
+   @artist = artist
+   @genre = genre
    @@all << self
  end
 
@@ -10,16 +12,4 @@ class Patient
    @@all
  end
 
-  def new_appointment(date, doctor)
-   new_appointment = Appointment.new(date, self, doctor)
- end
-
-  def appointments
-   Appointment.all.select{|appoinment| appoinment.patient == self}
- end
-
-  def doctors
-   appointments.collect{|appoinment| appoinment.doctor}
- end
-end
 end
